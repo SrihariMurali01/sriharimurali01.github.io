@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechFusion 2023 - Registration</title>
+    <style>
+        body {
+    font-family: 'Source Sans 3', sans-serif;
+    background-color: #fffdd0; /* Cream white background color */
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    background-image: url('image.jpg');
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent background image repetition */
+}
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* Full height of the viewport */
+        }
+
+        h1 {
+            color: #fffdd0; /* Dark gray text color for the title */
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #fffdd0; /* Medium gray text color for the subheading */
+            margin-bottom: 20px;
+        }
+
+        p {
+            color: #fffdd0; /* Light gray text color for instructions */
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 15px 20px;
+            margin: 15px;
+            border-radius: 20px; /* Rounded corners for buttons */
+            background-color: rgba(37, 67, 96, 0.7); /* Transparent green background color for buttons */
+            color: #ffffff; /* White text color */
+            font-size: 16px;
+            font-family: 'Source Code Pro Light', sans-serif;
+            cursor: pointer;
+            border: none;
+        }
+
+        button:hover {
+            background-color: rgb(19, 10, 90); /* Fully opaque darker green color on hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>TechFusion 2023</h1>
+        <h2>Where AI and Innovation Collide</h2>
+
+        <p>Click on the respective button to register for the events:</p>
+
+        <button onclick="debate()">Debate Competition</button>
+        <button onclick="hackathon()">Hackathon</button>
+    </div>
+
+    <script>
+        function debate() {
+            window.location.href = 'https://forms.gle/bL7a3tuXqG8LwsUu7';
+        }
+
+        function hackathon() {
+            window.location.href = 'https://forms.gle/pfQ1F3vuKaPVcLdV9';
+        }
+    </script>
+
+</body>
+</html>
