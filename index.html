@@ -8,7 +8,7 @@
         body {
             font-family: 'Caveat', cursive;
             font-family: 'Source Sans 3', sans-serif;
-            background-color: #fffdd0; /* Cream white background color */
+            background-color: rgb(0, 0, 0); /* Cream white background color */
             text-align: center;
             margin: 0;
             padding: 10px;
@@ -18,6 +18,7 @@
             background-repeat: no-repeat; /* Prevent background image repetition */
         }
 
+        
         #container {
             display: flex;
             flex-direction: column;
@@ -28,24 +29,28 @@
 
         h1 {
             color: #fffdd0; /* Dark gray text color for the title */
-            margin-bottom: 1px;
+            margin-bottom: 23px;
             font-size: 80px;
         }
 
         h2 {
             color: #fffdd0; /* Medium gray text color for the subheading */
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            font-family: 'Caveat', cursive;
+            font-family: 'Pompiere', sans-serif;
         }
 
         p {
             color: #fffdd0; /* Light gray text color for instructions */
             margin-bottom: 20px;
+            font-size: 18px;
+            
         }
 
         button {
             padding: 15px 20px;
-            margin: 15px;
-            border-radius: 20px; /* Rounded corners for buttons */
+            margin: 8px;
+            border-radius: 30px; /* Rounded corners for buttons */
             background-color: rgba(22, 53, 83, 0.7); /* Transparent green background color for buttons */
             color: #ffffff; /* White text color */
             font-size: 16px;
@@ -62,11 +67,19 @@
 </head>
 <body>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Source+Sans+3:wght@300&display=swap');
+         @font-face {
+            font-family: 'Lovelo Line Light';
+            font-style: normal;
+            font-weight: normal;
+            src: local('Lovelo Line Light'), url('Lovelo-LineLight.woff') format('woff');
+            }
     </style>
     <div id="container">
-        <h1>TechFusion 2023</h1>
-        <h2>Where AI and Innovation Collide</h2>
+        <h1 style="font-family:'Lovelo Line Light';font-weight:normal;font-size:60px">TechFusion 2023</h1>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Pompiere&family=Source+Code+Pro:wght@300&family=Source+Sans+3:wght@300&display=swap');
+        </style>
+        <h2>Where AI and Innovation Collide!</h2>
 
         <p>Click on the respective button to register for the events!</p>
         
