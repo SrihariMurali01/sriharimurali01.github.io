@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html ng-app="rpsApp">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.js"></script>
+    <style>
+        body {
+            font-family: Source Code PRo, sans-serif;
+            background-color: #ff8c00; /* Orange background */
+            text-align: center;
+            margin: 50px;
+            margin-top: 50px;
+            background-image: url('images\\bg.jpg');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size:cover;
+
+        }
+
+        h1 {
+            color: #fff; /* White text */
+        }
+
+        h5 {
+            font-style: italic;
+            font-weight: 500;
+            color: #fff
+        }
+
+        .choices {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 40px;
+            color: #fff
+        }
+
+        .choice {
+            display: inline-block;
+            text-align: center;
+            color: #fff
+        }
+
+        .choice img {
+            margin-top: 30px;
+            max-width: 100px;
+            margin-bottom: 10px;
+            border-radius: 25%;
+            color: #fff
+        }
+
+        .result {
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff; /* White text */
+            margin-top: 20px;
+        }
+
+        .result.tie {
+            color: #333; /* Dark text for tie */
+        }
+
+        .result.win {
+            color: #bb0000; /* Green text for win */
+        }
+
+        .result.lose {
+            color: #e74c3c; /* Red text for lose */
+        }
+
+        .dropdown {
+            font-family: Source Code PRo, sans-serif;
+            margin-top: 15px;
+            color: #fff
+        }
+
+        .dropdown select {
+            font-family: Source Code PRo, sans-serif;
+            margin-top: 15px;
+            padding: 5px;
+            font-size: 16px;
+            border-radius: 45%;
+            color: color-mix(in lch, red, maroon);
+            outline-color:chocolate
+        }
+
+        .submit-btn {
+            margin-top: 30px;
+            font-family: Source Code PRo, sans-serif;
+            background-color: #b44d08;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body ng-controller="rpsController">
+
+    <h1>Rock, Paper, Scissors, Spock, Lizard</h1>
+    <h5>"Scissors cuts paper, paper covers rock, rock crushes lizard, lizard poisons Spock, Spock smashes scissors, scissors decapitates lizard, lizard eats paper, paper disproves Spock, Spock vaporizes rock, and as it always has, rock crushes scissors."</h5>
+
+
+    <div class="choices">
+        <div class="choice">
+            <img ng-src="{{ getImageUrl(userChoice) }}" alt="{{ userChoice }}">
+            <p>Your Choice: {{ userChoice }}</p>
+        </div>
+        <div class="choice">
+            <img ng-src="{{ getImageUrl(computerChoice) }}" alt="{{ computerChoice }}">
+            <p>Opponent's Choice: {{ computerChoice }}</p>
+        </div>
+    </div>
+
+    <div class="dropdown">
+        <label for="choices">Choose your option:</label>
+        <select id="choices" ng-model="userChoice">
+            <option value="Rock">Rock</option>
+            <option value="Paper">Paper</option>
+            <option value="Scissors">Scissors</option>
+            <option value="Spock">Spock</option>
+            <option value="Lizard">Lizard</option>
+        </select>
+    </div>
+
+    <p class="result" ng-show="result" ng-class="{ 'tie': result === 'It\'s a tie!', 'win': result === 'You win!', 'lose': result === 'You lose!' }">
+        Result: {{ result }}
+    </p>
+
+    <button class="submit-btn" ng-click="playGame()">Submit</button>
+
+    <script>
+        var app = angular.module('rpsApp', []);
+
+        app.controller('rpsController', function($scope, $timeout) {
+            $scope.userChoice = 'Null'; // Default user choice
+            $scope.computerChoice = 'Null'; // Default computer choice
+
+            $scope.playGame = function() {
+                var choices = ['Rock', 'Paper', 'Scissors', 'Spock', 'Lizard'];
+                $scope.computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+                if ($scope.userChoice === $scope.computerChoice) {
+                    $scope.result = 'It\'s a tie!';
+                } else if (
+                    ($scope.userChoice === 'Rock' && ($scope.computerChoice === 'Scissors' || $scope.computerChoice === 'Lizard')) ||
+                    ($scope.userChoice === 'Paper' && ($scope.computerChoice === 'Rock' || $scope.computerChoice === 'Spock')) ||
+                    ($scope.userChoice === 'Scissors' && ($scope.computerChoice === 'Paper' || $scope.computerChoice === 'Lizard')) ||
+                    ($scope.userChoice === 'Spock' && ($scope.computerChoice === 'Rock' || $scope.computerChoice === 'Scissors')) ||
+                    ($scope.userChoice === 'Lizard' && ($scope.computerChoice === 'Paper' || $scope.computerChoice === 'Spock'))
+                ) {
+                    $scope.result = 'You win!';
+                } else {
+                    $scope.result = 'You lose!';
+                }
+
+                $timeout(function (){
+                    $scope.userChoice = 'Null'
+                    $scope.computerChoice = 'Null'
+                    $scope.result = ''
+                }, 8000)
+            };
+
+            $scope.getImageUrl = function(choice) {
+                return 'images/' + choice + '.gif'; // Assuming you have images named 'Rock.png', 'Paper.png', etc.
+            };
+        });
+    </script>
+
+</body>
+</html>
