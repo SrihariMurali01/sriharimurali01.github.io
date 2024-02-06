@@ -2,7 +2,6 @@
 <html ng-app="rpsApp">
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-animate.js"></script>
     <style>
         body {
             font-family: Source Code PRo, sans-serif;
@@ -106,7 +105,7 @@
 
     <div class="choices">
         <div class="choice">
-            <img ng-src="{{ getImageUrl(userChoice) }}" alt="{{ userChoice }}">
+            <img ng-src="{{ getImageUrl(userChoice) }}" alt="{{ userChoice }}"> <!--getImageUrl() -> Custom Function for relative path of image -->
             <p>Your Choice: {{ userChoice }}</p>
         </div>
         <div class="choice">
@@ -135,13 +134,13 @@
     <script>
         var app = angular.module('rpsApp', []);
 
-        app.controller('rpsController', function($scope, $timeout) {
+        app.controller('rpsController', function($scope, $timeout) { //$scope and $timeout are global binders.
             $scope.userChoice = 'Null'; // Default user choice
             $scope.computerChoice = 'Null'; // Default computer choice
 
             $scope.playGame = function() {
                 var choices = ['Rock', 'Paper', 'Scissors', 'Spock', 'Lizard'];
-                $scope.computerChoice = choices[Math.floor(Math.random() * choices.length)];
+                $scope.computerChoice = choices[Math.floor(Math.random() * choices.length)]; // Random choice for computer to choose
 
                 if ($scope.userChoice === $scope.computerChoice) {
                     $scope.result = 'It\'s a tie!';
